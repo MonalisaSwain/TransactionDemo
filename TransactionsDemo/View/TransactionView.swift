@@ -32,11 +32,16 @@ struct TransactionView: View {
                            }
                        }//For each
                    }//Vstack
+                   .padding(.horizontal, isIpad() ? 20 : 10)
                }//ScrollView
                .navigationTitle("Account Details")
                .navigationBarTitleDisplayMode(.inline)
            }//NavigationView
        }
+    
+    private func isIpad() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
+    }
 }
 
 struct AccountInfoView: View {
@@ -49,10 +54,10 @@ struct AccountInfoView: View {
                 Image("Accounts")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 40, height: 40)
+                    .frame(width: isIpad() ? 60 : 40, height: isIpad() ? 60 : 40)
                 VStack(alignment: .leading) {
                     Text(account.accountName)
-                        .font(.title)
+                        .font(isIpad() ? .largeTitle : .title)
                     Text(account.accountNumber)
                         .font(.subheadline)
                         .foregroundColor(.gray)
@@ -89,13 +94,17 @@ struct AccountInfoView: View {
                             .fontWeight(.bold)
                     }//Hstack
                 }//VSTack
-                .padding(.leading, 50)
+                .padding(.leading, isIpad() ? 50 : 20)
                 Spacer()
                     
             }//HSTACK
         }//VSTack
         .padding()
         .background(Color(UIColor.systemGray6))
+    }
+    
+    private func isIpad() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
     }
 }
 struct TransactionGroupView: View {
@@ -135,8 +144,9 @@ struct TransactionGroupView: View {
                                 }) {
                                     Image("FindUs")
                                         .resizable()
+                                        .frame(width: 25, height: 48)
                                         .scaledToFill()
-                                        .frame(width: 30, height: 24)
+                                        
                                 }
                                 .padding(.leading, 15)
                                 .padding(.trailing, 8)
@@ -161,8 +171,12 @@ struct TransactionGroupView: View {
                 }
             }
         }//Vstack
+        .padding(.horizontal, isIpad() ? 20 : 10)
         
         
+    }
+    private func isIpad() -> Bool {
+        return UIDevice.current.userInterfaceIdiom == .pad
     }
     
     private func fetchCoordinates(for address: String) {

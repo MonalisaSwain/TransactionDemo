@@ -36,14 +36,14 @@ struct Transaction: Identifiable, Codable {
     }
     
     var displayDate: String {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "dd MMM yyyy" 
-            dateFormatter.calendar = Calendar(identifier: .gregorian)
-            dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-            var formattedDate = dateFormatter.string(from: formattedDate)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let formattedDate = dateFormatter.string(from: formattedDate)
         
-            return formattedDate
-        }
+        return formattedDate
+    }
     
     
 }
